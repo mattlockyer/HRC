@@ -19,6 +19,8 @@ const mainnet_url = process.env.MAINNET_0_URL;
 gasLimit = process.env.GAS_LIMIT
 gasPrice = process.env.GAS_PRICE
 
+console.log(gasLimit, gasPrice)
+
 module.exports = {
 
   networks: {
@@ -29,7 +31,7 @@ module.exports = {
           local_url,
           { memonic: local_mnemonic },
           { shardID: 0, chainId: 2 },
-          { gasLimit: gasLimit, gasPrice: gasPrice},
+          { gasLimit, gasPrice},
         );
         const newAcc = truffleProvider.addByPrivateKey(local_private_key);
         truffleProvider.setSigner(newAcc);

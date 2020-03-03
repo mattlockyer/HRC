@@ -1,7 +1,8 @@
 import React, {useEffect} from 'react'
 import { useDispatch } from 'react-redux'
-import { setActive } from '../../redux/harmony'
+import { setActive, bech32Addresses, fortmaticTransfer } from '../../redux/harmony'
 
+import Form from '../../components/Form/Form'
 import Inventory from './../../components/Inventory/Inventory'
 import config from '../../../config'
 const {ENV} = config
@@ -11,7 +12,7 @@ import { route, bubble, button } from './Home.module.scss'
 export default function Home(props) {
 
     const {
-        harmonyState: { active, },
+        harmonyState: { active, fortmatic },
         hrc721State: { balances },
     } = props
 
@@ -39,6 +40,22 @@ export default function Home(props) {
             </section>
 
 
+
+            { fortmatic && 
+            <section>
+                <p>Will transfer from Fortmatic address: {fortmatic.address.substring(0, 16) + '...'}</p>
+                <Form
+                    {...{
+                        active,
+                        title: 'Test Fortmatic',
+                        addressType: 'bech32Address',
+                        addresses: bech32Addresses,
+                        submit: fortmaticTransfer
+                    }}
+                />
+                <p>ONE: {fortmatic.balanceONE}</p>
+            </section>
+            }
 
 
             {active && balances[active.name] && Object.keys(balances[active.name]).length > 0 &&

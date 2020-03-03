@@ -1,0 +1,18 @@
+{
+  "name": "harmony-erc20",
+  "version": "1.0.0",
+  "description": "Harmony sample ERC20 deploy",
+  "main": "truffle.js",
+  "dependencies": {
+    "@harmony-js/crypto": "0.0.7",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "request": "^2.88.2",
+    "tslib": "^1.11.1"
+  },
+  "scripts": {
+    "start": "node src/app.js"
+  }
+}
